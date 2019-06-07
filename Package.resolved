@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Apic",
+        "repositoryURL": "https://github.com/JuanjoArreola/Apic.git",
+        "state": {
+          "branch": null,
+          "revision": "5b82f14f8e458cc0c1162d94bcf3972085815451",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "AsyncRequest",
+        "repositoryURL": "https://github.com/JuanjoArreola/AsyncRequest.git",
+        "state": {
+          "branch": null,
+          "revision": "2ec3e077dde2b690069c9d6fd533fc09be5cd3ef",
+          "version": "2.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
