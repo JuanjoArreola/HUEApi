@@ -8,6 +8,7 @@
 import Foundation
 
 public class Configuration: Decodable {
+    public var bridgeid: String
     public var name: String
     public var zigbeechannel: Int
     public var mac: String

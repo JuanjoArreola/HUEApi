@@ -28,6 +28,10 @@ private struct NewUser: Encodable {
     var devicetype: String
 }
 
-public class HUEUser: Codable {
+public class HUEUser: Codable, CustomDebugStringConvertible {
     public var username: String
+    
+    public var debugDescription: String {
+        return "💡👨‍🔧 \(username)"
+    }
 }

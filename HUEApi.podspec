@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.version      = "0.1.0"
   spec.summary      = "Api to communicate with Philips HUE lights"
 
-  spec.homepage     = "http://EXAMPLE/HUEApi"
+  spec.homepage     = "https://github.com/JuanjoArreola/HUEApi"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
@@ -21,18 +21,20 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = "2.0"
   spec.tvos.deployment_target = "9.0"
 
+  spec.swift_version = '5.0'
+
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.source       = { :git => "http://EXAMPLE/HUEApi.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/JuanjoArreola/HUEApi.git", :tag => "#{spec.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.source_files = "Sources/*.swift"
+  spec.source_files = "Sources/HUEApi/*.swift"
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.requires_arc = true
 
-  spec.dependency "Apic", "~> 5.1.0"
+  spec.dependency "Apic", "~> 5.1.1"
 
 end
