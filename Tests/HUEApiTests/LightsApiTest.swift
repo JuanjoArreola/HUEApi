@@ -26,7 +26,7 @@ class LightsApiTest: XCTestCase {
         api.lights().success { lights in
             print(lights)
         }.fail { error in
-            print(error)
+            log.error(error)
         }.finished {
             expectation.fulfill()
         }
@@ -40,7 +40,7 @@ class LightsApiTest: XCTestCase {
         api.light(id: "1").success { light in
             print(light)
         }.fail { error in
-            print(error)
+            log.error(error)
         }.finished {
             expectation.fulfill()
         }
@@ -55,7 +55,7 @@ class LightsApiTest: XCTestCase {
         api.setState(state, of: "1").success { light in
             print(light)
         }.fail { error in
-            print(error)
+            log.error(error)
             XCTFail()
         }.finished {
             expectation.fulfill()
@@ -71,7 +71,7 @@ class LightsApiTest: XCTestCase {
         api.setState(state, of: "1").success { light in
             print(light)
             }.fail { error in
-                print(error)
+                log.error(error)
                 XCTFail()
             }.finished {
                 expectation.fulfill()

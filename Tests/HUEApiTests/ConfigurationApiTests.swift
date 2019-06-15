@@ -30,7 +30,7 @@ final class ConfigurationApiTests: XCTestCase {
             XCTAssertTrue(error is HUEError)
             let hueError = error as! HUEError
             XCTAssertEqual(hueError.type, 101)
-            print(error)
+            log.error(error)
         }.finished {
             expectation.fulfill()
         }
@@ -44,7 +44,7 @@ final class ConfigurationApiTests: XCTestCase {
         api.configuration().success { configuration in
             print(configuration)
         }.fail { error in
-            print(error)
+            log.error(error)
             XCTFail()
         }.finished {
             expectation.fulfill()

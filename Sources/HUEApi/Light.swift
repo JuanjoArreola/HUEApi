@@ -9,7 +9,7 @@ import Foundation
 
 public class LightState: Decodable {
     public var on: Bool
-    public var brightness: UInt8?
+    public var brightness: UInt8
     public var hue: Int
     public var saturation: Int
     public var reachable: Bool

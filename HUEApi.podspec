@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "HUEApi"
-  spec.version      = "0.1.0"
+  spec.version      = "0.1.1"
   spec.summary      = "Api to communicate with Philips HUE lights"
 
   spec.homepage     = "https://github.com/JuanjoArreola/HUEApi"
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.ios.deployment_target = "11.0"
-  spec.osx.deployment_target = "10.9"
+  spec.osx.deployment_target = "10.12"
   spec.watchos.deployment_target = "2.0"
   spec.tvos.deployment_target = "9.0"
 

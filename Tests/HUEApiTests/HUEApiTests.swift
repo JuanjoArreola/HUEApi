@@ -1,5 +1,8 @@
 import XCTest
 @testable import HUEApi
+import Logg
+
+let log = CompositeLogger()
 
 final class HUEApiTests: XCTestCase {
     func testExample() {
