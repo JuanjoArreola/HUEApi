@@ -1,3 +1,5 @@
 # HUEApi
 
-A description of this package.
+Api to communicate with Philips HUE lights
+
+

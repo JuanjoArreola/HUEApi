@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Apic",
-        "repositoryURL": "https://github.com/JuanjoArreola/Apic.git",
+        "repositoryURL": "/Users/juanjo/Devel/Apic",
         "state": {
           "branch": null,
-          "revision": "5b82f14f8e458cc0c1162d94bcf3972085815451",
-          "version": "5.1.0"
+          "revision": "0ac166aace6d08c4d2ec9012b82f0b1b09795978",
+          "version": "5.1.1"
         }
       },
       {
@@ -17,6 +17,15 @@
           "branch": null,
           "revision": "2ec3e077dde2b690069c9d6fd533fc09be5cd3ef",
           "version": "2.2.0"
+        }
+      },
+      {
+        "package": "Logg",
+        "repositoryURL": "https://github.com/JuanjoArreola/Logg.git",
+        "state": {
+          "branch": null,
+          "revision": "636bff57a58a75dc9939e5f74ee759b83eb4dcef",
+          "version": "2.1.0"
         }
       }
     ]

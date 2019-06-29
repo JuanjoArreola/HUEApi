@@ -1,18 +1,17 @@
 import Foundation
 import Apic
+import AsyncRequest
 
 public enum HUEAPIError: Error {
-    case notAuthenticated
+    case notAuthenticated, replaced, parsingError
 }
 
 public class HUEApi: AbstractRepository {
     
     let baseURL: String
-    var username: String?
     
-    public init(url: String, username: String?) {
+    public init(url: String) {
         self.baseURL = url
-        self.username = username
         super.init(responseParser: HUEParser())
     }
     
@@ -30,5 +29,38 @@ public class HUEApi: AbstractRepository {
     
     func delete(endpoint: String) -> Route {
         return Route.delete(baseURL + endpoint)
+    }
+    
+    public func requestObject<U: Decodable, T>(route: Route, parameters: RequestParameters? = nil, transform: @escaping (U) throws -> T) -> Request<T> {
+        let request = URLSessionRequest<T>()
+        do {
+            request.dataTask = try doRequest(route: route, parameters: parameters, completion: { (data, response, error) in
+                do {
+                    let object: U = try self.responseParser.object(from: data, response: response, error: error)
+                    request.complete(with: try transform(object), in: self.responseQueue)
+                } catch {
+                    request.complete(with: error, in: self.responseQueue)
+                }
+            })
+        } catch {
+            request.complete(with: error, in: responseQueue)
+        }
+        return request
+    }
+    
+    public func requestObject<U: Decodable, T>(route: Route, parameters: RequestParameters? = nil,
+                                               request: URLSessionRequest<T>, transform: @escaping (U) throws -> T) {
+        do {
+            request.dataTask = try doRequest(route: route, parameters: parameters, completion: { (data, response, error) in
+                do {
+                    let object: U = try self.responseParser.object(from: data, response: response, error: error)
+                    request.complete(with: try transform(object), in: self.responseQueue)
+                } catch {
+                    request.complete(with: error, in: self.responseQueue)
+                }
+            })
+        } catch {
+            request.complete(with: error, in: responseQueue)
+        }
     }
 }

@@ -11,7 +11,7 @@ import Apic
 class HUEParser: DefaultResponseParser, CustomDateParsing {
     
     public var dateFormats: [String] {
-        return ["y-MM-dd'T'HH:mm:ss", "HH:mm:ss", "y-MM-dd"]
+        return ["y-MM-dd'T'HH:mm:ss", "'T'HH:mm:ss", "y-MM-dd"]
     }
     
     override func getErrorContainer(from data: Data) throws -> ErrorContainerProtocol {
@@ -20,13 +20,6 @@ class HUEParser: DefaultResponseParser, CustomDateParsing {
     }
     
     override func getContainer<T>(from data: Data, response: URLResponse?) throws -> ResponseContainer<T> where T : Decodable {
-        print(">>> url \(response?.url?.lastPathComponent ?? "?")")
-        if response?.url?.lastPathComponent == "api" {
-            let successes = try decoder.decode(Array<HUESuccess<T>>.self, from: data)
-            let container: ResponseContainer<T> = ResponseContainer()
-            container.object = successes.first?.success
-            return container
-        }
         let object = try decoder.decode(T.self, from: data)
         return ResponseContainer(object: object)
     }

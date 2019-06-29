@@ -10,7 +10,7 @@ import HUEApi
 
 class LightsApiTest: XCTestCase {
     
-    var api = LightsApi(url: "http://192.168.0.101/", username: "UgYUU4g5jBFToI5uS377t-j6dyhl0gCfjw8QAVI2")
+    var api = LightsApi(url: "http://192.168.0.100/", username: "UgYUU4g5jBFToI5uS377t-j6dyhl0gCfjw8QAVI2")
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,23 +24,55 @@ class LightsApiTest: XCTestCase {
         let expectation = self.expectation(description: "lights")
         
         api.lights().success { lights in
-            print(lights)
+            log.debug(lights)
         }.fail { error in
             log.error(error)
+            XCTFail()
         }.finished {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 4.0)
+    }
+    
+    func testNewLights() {
+        let expectation = self.expectation(description: "lights")
+        
+        api.newLights().success { result in
+            log.debug(result)
+        }.fail { error in
+            log.error(error)
+            XCTFail()
+        }.finished {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 4.0)
+    }
+    
+    func testSearchNewLights() {
+        let expectation = self.expectation(description: "lights")
+        
+        api.searchLights().success { result in
+            log.debug(result)
+        }.fail { error in
+            log.error(error)
+            XCTFail()
+        }.finished {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 4.0)
     }
     
     func testLight() {
         let expectation = self.expectation(description: "light")
         
         api.light(id: "1").success { light in
-            print(light)
+            log.debug(light)
         }.fail { error in
             log.error(error)
+            XCTFail()
         }.finished {
             expectation.fulfill()
         }
@@ -51,9 +83,9 @@ class LightsApiTest: XCTestCase {
     func testLightOn() {
         let expectation = self.expectation(description: "light")
         
-        let state = SetLightState(on: true)
+        let state = SetState(on: true)
         api.setState(state, of: "1").success { light in
-            print(light)
+            log.debug(light)
         }.fail { error in
             log.error(error)
             XCTFail()
@@ -67,14 +99,14 @@ class LightsApiTest: XCTestCase {
     func testLightOff() {
         let expectation = self.expectation(description: "light")
         
-        let state = SetLightState(on: false)
+        let state = SetState(on: false)
         api.setState(state, of: "1").success { light in
-            print(light)
-            }.fail { error in
-                log.error(error)
-                XCTFail()
-            }.finished {
-                expectation.fulfill()
+            log.debug(light)
+        }.fail { error in
+            log.error(error)
+            XCTFail()
+        }.finished {
+            expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 1.0)

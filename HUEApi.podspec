@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "HUEApi"
-  spec.version      = "0.1.1"
+  spec.version      = "0.3.0"
   spec.summary      = "Api to communicate with Philips HUE lights"
 
   spec.homepage     = "https://github.com/JuanjoArreola/HUEApi"
