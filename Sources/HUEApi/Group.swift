@@ -11,20 +11,20 @@ public class Group: Decodable {
     public var id: String = ""
     
     /// A unique, editable name given to the group.
-    public var name: String
+    public let name: String
     
     /// If not provided upon creation “LightGroup” is used.
-    public var type: GroupType
-    public var lights: [String]
-    public var sensors: [Sensor]
+    public let type: GroupType
+    public let lights: [String]
+    public let sensors: [Sensor]
     
     /// Category of Room types. Default is: Other.
-    public var `class`: RoomClass
-    public var recycle: Bool
+    public let `class`: RoomClass
+    public let recycle: Bool
     
     /// The light state of one of the lamps in the group.
-    public var action: ColorState
-    public var state: GroupState
+    public let action: ColorState
+    public let state: GroupState
 }
 
 public class Sensor: Decodable {

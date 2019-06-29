@@ -87,12 +87,7 @@ public class LightsApi: HUEApi {
     
     /// Deletes a light from the bridge.
     public func deleteLight(_ id: String) -> Request<String> {
-        return requestObject(route: delete(endpoint: "/api/\(username)/lights/\(id)"), transform: { (result: [HUESuccess<String>]) in
-            if let string = result.first?.success {
-                return string
-            }
-            throw HUEAPIError.parsingError
-        })
+        return deleteResource(at: delete(endpoint: "/api/\(username)/lights/\(id)"))
     }
     
     /// Allows the user to turn the light on and off, modify the hue and effects.

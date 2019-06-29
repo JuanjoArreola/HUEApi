@@ -80,11 +80,6 @@ public class GroupsApi: HUEApi {
     
     /// Deletes the specified group from the bridge.
     func deleteGroup(_ id: String) -> Request<String> {
-        return requestObject(route: delete(endpoint: "/api/\(username)/groups/\(id)"), transform: { (result: [HUESuccess<String>]) in
-            if let string = result.first?.success {
-                return string
-            }
-            throw HUEAPIError.parsingError
-        })
+        return deleteResource(at: delete(endpoint: "/api/\(username)/groups/\(id)"))
     }
 }

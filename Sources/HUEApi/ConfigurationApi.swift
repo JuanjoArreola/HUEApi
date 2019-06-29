@@ -27,8 +27,8 @@ public class ConfigurationApi: HUEApi {
     
     public func configuration(username: String) -> Request<BridgeConfiguration> {
         return requestObject(route: get(endpoint: "api/\(username)/config"), transform: { (configuration: BridgeConfiguration) in
-            configuration._whitelist.forEach({ $1.id = $0 })
-            configuration.whitelist = Array(configuration._whitelist.values)
+            configuration.whitelistDictionary.forEach({ $1.id = $0 })
+            configuration.whitelist = Array(configuration.whitelistDictionary.values)
             return configuration
         })
     }

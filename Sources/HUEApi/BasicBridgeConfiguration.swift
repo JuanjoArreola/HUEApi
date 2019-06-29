@@ -10,35 +10,35 @@ import Foundation
 public class BasicBridgeConfiguration: Decodable {
     
     /// The unique bridge id. This is currently generated from the bridge Ethernet mac address
-    public var bridgeId: String
+    public let bridgeId: String
     
     /// Name of the bridge. This is also its uPnP name, so will reflect the actual uPnP name after any conflicts have been resolved
-    public var name: String
+    public let name: String
     
     /// The version of the datastore
-    public var datastoreVersion: String
+    public let datastoreVersion: String
     
     /// Software version of the bridge
-    public var softwareVersion: String
+    public let softwareVersion: String
     
     ///The version of the hue API
-    public var apiVersion: Version
+    public let apiVersion: Version
     
     /// MAC address of the bridge.
-    public var mac: String
+    public let mac: String
     
     /// Indicates if bridge settings are factory new
-    public var factoryNew: Bool
+    public let factoryNew: Bool
     
     /// If a bridge backup file has been restored on this bridge from a bridge with a different bridgeid,
     /// it will indicate that bridge id, otherwise it will be null
     public var replacesBridgeId: String?
     
     /// This parameter uniquely identifies the hardware model of the bridge (BSB001, BSB002)
-    public var modelId: String
+    public let modelId: String
     
     /// Name of the starterkit created in the factory
-    public var starterkitId: String
+    public let starterkitId: String
     
     enum CodingKeys: String, CodingKey {
         case name, mac

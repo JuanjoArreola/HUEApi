@@ -31,20 +31,18 @@ public class HUEApi: AbstractRepository {
         return Route.delete(baseURL + endpoint)
     }
     
+    func deleteResource(at route: Route) -> Request<String> {
+        return requestObject(route: route, transform: { (result: [HUESuccess<String>]) in
+            if let string = result.first?.success {
+                return string
+            }
+            throw HUEAPIError.parsingError
+        })
+    }
+    
     public func requestObject<U: Decodable, T>(route: Route, parameters: RequestParameters? = nil, transform: @escaping (U) throws -> T) -> Request<T> {
         let request = URLSessionRequest<T>()
-        do {
-            request.dataTask = try doRequest(route: route, parameters: parameters, completion: { (data, response, error) in
-                do {
-                    let object: U = try self.responseParser.object(from: data, response: response, error: error)
-                    request.complete(with: try transform(object), in: self.responseQueue)
-                } catch {
-                    request.complete(with: error, in: self.responseQueue)
-                }
-            })
-        } catch {
-            request.complete(with: error, in: responseQueue)
-        }
+        requestObject(route: route, parameters: parameters, request: request, transform: transform)
         return request
     }
     

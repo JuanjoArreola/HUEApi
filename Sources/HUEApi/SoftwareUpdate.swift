@@ -10,10 +10,10 @@ import Foundation
 public class BridgeSoftwareUpdate: Decodable {
     
     /// Software update object of bridge
-    public var bridge: SoftwareUpdate
+    public let bridge: SoftwareUpdate
     
     /// State of software update for the system
-    public var state: SoftwareUpdateState
+    public let state: SoftwareUpdateState
     
     /// Setting this flag true lets the bridge search for software update at the portal.
     /// After the search attempt, this flag is reset to false. Requires portal connection to update software.
@@ -24,10 +24,10 @@ public class BridgeSoftwareUpdate: Decodable {
     /// - last software configuration update requires additional software to be transferred (noupdates -> transferring)
     /// - last successful transfer of a software image to a device
     /// last successful installation of a software image on a device
-    public var lastChange: Date
+    public let lastChange: Date
     
     /// Automatic update configuration
-    public var autoinstall: Autoinstall
+    public let autoinstall: Autoinstall
     
     enum CodingKeys: String, CodingKey {
         case bridge, state, autoinstall
@@ -47,10 +47,10 @@ public class SoftwareUpdate: Decodable {
 }
 
 public class Autoinstall: Decodable {
-    public var updatetime: Date
+    public let updatetime: Date
     
     /// Indicates if automatic update is activated. Default is false
-    public var on: Bool
+    public let on: Bool
 }
 
 public enum SoftwareUpdateState: String, Codable {

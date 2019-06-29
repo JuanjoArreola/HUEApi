@@ -11,25 +11,25 @@ public class Light: Decodable, CustomDebugStringConvertible {
     public var id: String = ""
     
     /// A fixed name describing the type of light e.g. “Extended color light”
-    public var type: String
+    public let type: String
     
     /// A unique, editable name given to the light.
-    public var name: String
+    public let name: String
     
     /// The hardware model of the light.
-    public var modelId: String
+    public let modelId: String
     
     /// Details the state of the light, see the state table below for more details.
-    public var state: LightState
+    public let state: LightState
     
     /// Unique id of the device.
     /// The MAC address of the device with a unique endpoint id in the form: AA:BB:CC:DD:EE:FF:00:11-XX
-    public var uniqueId: String
+    public let uniqueId: String
     
     /// The manufacturer name.
-    public var manufacturerName: String
+    public let manufacturerName: String
     
-    public var softwareUpdate: SoftwareUpdate
+    public let softwareUpdate: SoftwareUpdate
     
     /// Unique ID of the luminaire the light is a part of in the format: AA:BB:CC:DD-XX-YY.
     ///AA:BB:, … represents the hex of the luminaireid, XX the lightsource position (incremental but may contain gaps) and YY the lightpoint position (index of light in luminaire group).
